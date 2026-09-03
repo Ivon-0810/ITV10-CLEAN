@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: irwanetraceforest-sync
+    runtime: python
+    plan: free
+    buildCommand: "pip install -r requirements-sync.txt"
+    startCommand: "gunicorn sync_server:app --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
